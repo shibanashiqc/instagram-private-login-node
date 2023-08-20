@@ -9,8 +9,8 @@ async function login (req, res)  {
     var username = req.body.username;
     var password = req.body.password;
     var proxy = req.body.proxy;
-    let sessionPath = path.join('./sessions/' + username + '.json');
-    let cookiePath = path.join('./sessions/' + username + '_cookie.json');
+    let sessionPath = path.join('sessions/' + username + '.json');
+    let cookiePath = path.join('cookies/' + username + '.json');
     
     try {
         
