@@ -27,23 +27,28 @@ async function login (req, res)  {
       var cookie = '';
       
       
-      if(!fs.existsSync(sessionPath)) {
+      // if(!fs.existsSync(sessionPath)) {
+      // let login = await ig.account.login(username, password);
+      // const serialized = await ig.state.serialize();
+      // const deserialized = JSON.stringify(serialized);
+      // cookie = await ig.state.serializeCookieJar();
+      //   fs.writeFileSync(cookiePath, JSON.stringify(cookie));
+      //   fs.writeFileSync(sessionPath, deserialized);
+      //   console.log("session saved");
+      //   await ig.state.deserialize(deserialized);
+      // }else{
+      //   const file = fs.readFileSync(sessionPath, 'utf8');
+      //   const deserialized = JSON.parse(file);
+      //   cookie = JSON.parse(fs.readFileSync(cookiePath, 'utf8')); 
+      //   await ig.state.deserializeCookieJar(cookie);
+      //   await ig.state.deserialize(deserialized);
+      //   console.log("session loaded");
+      // }
+      
       let login = await ig.account.login(username, password);
       const serialized = await ig.state.serialize();
       const deserialized = JSON.stringify(serialized);
       cookie = await ig.state.serializeCookieJar();
-        fs.writeFileSync(cookiePath, JSON.stringify(cookie));
-        fs.writeFileSync(sessionPath, deserialized);
-        console.log("session saved");
-        await ig.state.deserialize(deserialized);
-      }else{
-        const file = fs.readFileSync(sessionPath, 'utf8');
-        const deserialized = JSON.parse(file);
-        cookie = JSON.parse(fs.readFileSync(cookiePath, 'utf8')); 
-        await ig.state.deserializeCookieJar(cookie);
-        await ig.state.deserialize(deserialized);
-        console.log("session loaded");
-      }
       
       let formatedCookie = cookie.cookies.map((item) => {
         return `${item.key}=${item.value}`;
