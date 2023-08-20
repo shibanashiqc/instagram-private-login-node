@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { IgApiClient } from 'instagram-private-api';
 import * as yup from 'yup';
+import path from 'path';
 const ig = new IgApiClient();
 
 
@@ -8,8 +9,8 @@ async function login (req, res)  {
     var username = req.body.username;
     var password = req.body.password;
     var proxy = req.body.proxy;
-    let sessionPath = './sessions/' + username + '.json';
-    let cookiePath = './cookies/' + username + '.json';
+    let sessionPath = path.join('./sessions/' + username + '.json');
+    let cookiePath = path.join('./sessions/' + username + '_cookie.json');
     
     try {
         
