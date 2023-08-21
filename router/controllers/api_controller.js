@@ -56,13 +56,14 @@ async function login (req, res)  {
 
       
     
-      // const loggedInUser = await ig.account.currentUser();
+      const loggedInUser = await ig.account.currentUser();
       
       res.json({
         "status": true,
         "message": "Login Success",
         "data": {
-          'cookie' : formatedCookie
+          'cookie' : formatedCookie,
+          'user' : loggedInUser,
         }
       })
       
