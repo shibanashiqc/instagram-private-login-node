@@ -22,6 +22,8 @@ async function login (req, res)  {
       ig.state.generateDevice(username);
       if(proxy && proxy != 0){
         ig.state.proxyUrl = proxy;
+      }else{
+        ig.state.proxyUrl = undefined;
       }
       
       var cookie = '';
