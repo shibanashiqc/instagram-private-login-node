@@ -20,7 +20,7 @@ async function login (req, res)  {
       })
     
       ig.state.generateDevice(username);
-      if(proxy){
+      if(proxy && proxy != 0){
         ig.state.proxyUrl = proxy;
       }
       
